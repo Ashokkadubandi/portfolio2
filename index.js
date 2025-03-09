@@ -33,6 +33,14 @@ const createWorks = () => {
         }
         workCard.appendChild(workViewbtn);
 
+        window.addEventListener('scroll',function(){
+            if(workCard.getBoundingClientRect().top < 500){
+                workCard.classList.add('workcard-view');
+            }else{
+                workCard.classList.remove('workcard-view');
+            }
+        })
+
     })
 }
 
