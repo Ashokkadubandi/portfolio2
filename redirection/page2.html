@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./page2.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="main">This is page 2 HTML</h1>
+    <div id="text"></div>
+    <script>
+        function getQuery(){
+            const params = new URLSearchParams(window.location.search)
+            return {name:params.get('name'),api:params.get('api')}
+        }
+        let data = getQuery();
+        document.getElementById('main').textContent = data.name
+        console.log(data)
+        fetch(`${data.api}`)
+        .then(res => res.text())
+        .then(data => {
+            console.log(data)
+            document.getElementById('text').innerHTML = data.replace(/\n/g,"<br>");
+        })
+    </script>
+</body>
+</html>
